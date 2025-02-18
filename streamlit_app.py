@@ -41,7 +41,7 @@ if page == "Home":
             unsafe_allow_html=True
         )
 
-    st.image("res\\viswa.png")
+    st.image("viswa.png")
     st.markdown("""<div style="font-size: 20px; line-height: 1.2;">
                         <p>I am excited to present my vision for the role of Technical Affairs Secretary at Alakananda hostel.
                         My goal is to transform our hostel into a vibrant, tech-driven community that offers numerous opportunities for technical growth and innovation.
