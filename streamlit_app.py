@@ -1,30 +1,5 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from streamlit.components.v1 import html
-
-
-html("""
-<script>
-    const screenWidth = window.innerWidth;
-    const isMobile = screenWidth < 768; // Define mobile as width less than 768px
-    document.body.dataset.isMobile = isMobile; // Pass result to body attribute
-</script>
-""", height=0)
-
-is_mobile = st.session_state.get("is_mobile", False)
-
-html("""
-<script>
-    // Pass mobile detection result to Streamlit via session state
-    const isMobile = document.body.dataset.isMobile === "true";
-    window.parent.postMessage({ is_mobile: isMobile }, "*");
-</script>
-""", height=0)
-
-if "is_mobile" not in st.session_state:
-    st.session_state["is_mobile"] = False
-
-orientation = "horizontal" if not is_mobile else "vertical"
 
 st.set_page_config(layout="wide", page_title="Manifesto", page_icon="📜")
 st.markdown(
@@ -40,7 +15,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-page = option_menu(menu_title=None, default_index=0, options=["Home", "Vision", "Initiatives", "Events", "Tech Room", "Contact"], icons=["house", "lightbulb-fill", "building-up", "calendar-date-fill", "clipboard-check", "telephone-fill"], orientation=orientation)
+page = option_menu(menu_title=None, default_index=0, options=["Home", "Vision", "Initiatives", "Events", "Tech Room", "Contact"], icons=["house", "lightbulb-fill", "building-up", "calendar-date-fill", "clipboard-check", "telephone-fill"], orientation="horizontal")
 
 if page == "Home":
     st.title("My Manifesto")
